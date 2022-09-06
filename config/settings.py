@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'diary.apps.Diaryconfig',
+    'diary.apps.DiaryConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
