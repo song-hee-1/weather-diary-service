@@ -12,11 +12,26 @@
       - [💭 프로젝트 설명](#-프로젝트-설명)
       - [🧹 사용 기술](#-사용-기술)
       - [📰 모델링](#-모델링)
-      - [🛠 API Test](#-API-TEST)
+      - [🛠 API Test](#-api-test)
+  * [프로젝트 분석](#프로젝트-분석)
+  * [API ENDPOINT](#api-endpoint)
+  * [Troubleshooting](#troubleshooting)
+  * [TIL](#til)
+
+
+  * [개발 기간](#개발-기간)
+  * [프로젝트 개요](#프로젝트-개요)
+      - [프로젝트 주체](#프로젝트-주체)
+      - [💭 프로젝트 설명](#-프로젝트-설명)
+      - [🛠 개발 조건](#-개발-조건)
+      - [🧹 사용 기술](#-사용-기술)
+      - [📰 모델링](#-모델링)
+      - [🛠 API Test](#-api-test)
   * [프로젝트 분석](#프로젝트-분석)
   * [API ENDPOINT](#API-ENDPOINT)
   * [Troubleshooting](#Troubleshooting)
   * [TIL](#TIL)
+
 
 
 
@@ -31,7 +46,7 @@
 
 **2022.09.12** : 버그 수정 및 테스트 코드  작성
 </br>
-  </br>
+</br>
   
 ## 프로젝트 개요
 
@@ -43,6 +58,8 @@
 
 
 [thingsflow](https://thingsflow.com/ko/home)
+
+</br>
 
 #### 💭 프로젝트 설명
 사용자가 게시글을 업로드한 시점의 **날씨**와 **일기**를 적을 수 있도록
@@ -64,17 +81,19 @@
 > - Weather API를 활용하여 게시글 등록시 날씨가 반영되어야 함
 
 </br>
+
 #### 🧹 사용 기술 
 
 - **Back-End** : Python, Django, Django REST framework
 - **ETC** : Git, Github, Azure
 
-<br>
+</br>
 
 #### 📰 모델링
 ![무제 2](https://user-images.githubusercontent.com/83492367/189656844-fd1224fa-a9cc-4bdc-8dbc-bafa28819f5a.jpg)
 
 </br>
+
 #### 🛠 API Test
 
 요구사항을 바탕으로 한 15개의 테스트 구현
