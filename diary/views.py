@@ -1,9 +1,6 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-<<<<<<< HEAD
-=======
 from rest_framework.serializers import ValidationError
->>>>>>> main
 
 from .models import Diary
 from .serializers import DiarySerializer, DiaryDetailSerializer, DiaryDeleteSerializer
