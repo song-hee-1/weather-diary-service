@@ -59,19 +59,19 @@ class DiaryDeleteSerializer(serializers.ModelSerializer):
 
 
     # Update method는 왜 유효성 검증이 안되는 것인가
-    def update(self, instance, validated_data):
-        password = validated_data.pop('password', None)
-
-        if not password:
-            msg = "비밀번호를 입력해주세요."
-            raise ValidationError(msg)
-
-        password = password.encode('utf-8')
-        diary_password = instance.password.encode('utf-8')
-
-        if not bcrypt.checkpw(password, diary_password):
-            msg = "비밀번호가 맞지 않거나 삭제 할 수 없습니다."
-            raise ValidationError(msg)
-
-        instance.save()
-        return instance
+    # def update(self, instance, validated_data):
+    #     password = validated_data.pop('password', None)
+    #
+    #     if not password:
+    #         msg = "비밀번호를 입력해주세요."
+    #         raise ValidationError(msg)
+    #
+    #     password = password.encode('utf-8')
+    #     diary_password = instance.password.encode('utf-8')
+    #
+    #     if not bcrypt.checkpw(password, diary_password):
+    #         msg = "비밀번호가 맞지 않거나 삭제 할 수 없습니다."
+    #         raise ValidationError(msg)
+    #
+    #     instance.save()
+    #     return instance
