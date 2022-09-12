@@ -10,6 +10,7 @@ class DiarySerializer(serializers.ModelSerializer):
     class Meta:
         model = Diary
         exclude = ['update_date']
+        read_only_fields = ['weather']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -27,6 +28,7 @@ class DiaryDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Diary
         fields = '__all__'
+        read_only_fields = ['weather']
         extra_kwargs = {'password': {'write_only': True}}
 
     def update(self, instance, validated_data):
