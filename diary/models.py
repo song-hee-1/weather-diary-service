@@ -13,6 +13,7 @@ class Diary(models.Model):
     nickname = models.CharField(max_length=10, verbose_name="작성자별명")
     create_date = models.DateTimeField(auto_now_add=True, verbose_name="생성날짜")
     update_date = models.DateTimeField(auto_now=True, verbose_name="수정날짜")
+    weather = models.CharField(max_length=10, default=None, null=True, verbose_name='날씨')
 
     class Meta:
         verbose_name = "일기"

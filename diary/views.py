@@ -1,10 +1,14 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
+<<<<<<< HEAD
+=======
 from rest_framework.serializers import ValidationError
+>>>>>>> main
 
 from .models import Diary
 from .serializers import DiarySerializer, DiaryDetailSerializer, DiaryDeleteSerializer
 from .pagination import DiaryPagination
+from .utils import get_weather_info
 
 import bcrypt
 
@@ -18,6 +22,20 @@ class DiaryViewSet(viewsets.ModelViewSet):
             return DiarySerializer
         if self.action in ("retrieve", "update", "partial_update"):
             return DiaryDetailSerializer
+        return DiaryDetailSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        current_weather = get_weather_info(request)
+        self.perform_create(serializer, current_weather)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    def perform_create(self, serializer, weather=None):
+        serializer.save(weather=weather)
+
         if self.action == "destory":
             return DiaryDeleteSerializer
         return DiarySerializer

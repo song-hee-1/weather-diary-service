@@ -10,6 +10,7 @@ class DiarySerializer(serializers.ModelSerializer):
     class Meta:
         model = Diary
         exclude = ['update_date']
+        read_only_fields = ['weather']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -27,6 +28,7 @@ class DiaryDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Diary
         fields = '__all__'
+        read_only_fields = ['weather']
         extra_kwargs = {'password': {'write_only': True}}
 
     def update(self, instance, validated_data):
@@ -50,28 +52,26 @@ class DiaryDeleteSerializer(serializers.ModelSerializer):
         model = Diary
         fields = ('password',)
 
-
     def validate_password(self, value):
         if not value:
             msg = "비밀번호를 입력해주세요."
             raise ValidationError(msg)
         return value
 
-
-    # Update method는 왜 유효성 검증이 안되는 것인가
-    def update(self, instance, validated_data):
-        password = validated_data.pop('password', None)
-
-        if not password:
-            msg = "비밀번호를 입력해주세요."
-            raise ValidationError(msg)
-
-        password = password.encode('utf-8')
-        diary_password = instance.password.encode('utf-8')
-
-        if not bcrypt.checkpw(password, diary_password):
-            msg = "비밀번호가 맞지 않거나 삭제 할 수 없습니다."
-            raise ValidationError(msg)
-
-        instance.save()
-        return instance
+    # Update method는 왜 유효성 검증이 안되는 것인가에 대한 고민 => viewset에서 @action decorator를 이용하여 기능 구현
+    # def update(self, instance, validated_data):
+    #     password = validated_data.pop('password', None)
+    #
+    #     if not password:
+    #         msg = "비밀번호를 입력해주세요."
+    #         raise ValidationError(msg)
+    #
+    #     password = password.encode('utf-8')
+    #     diary_password = instance.password.encode('utf-8')
+    #
+    #     if not bcrypt.checkpw(password, diary_password):
+    #         msg = "비밀번호가 맞지 않거나 삭제 할 수 없습니다."
+    #         raise ValidationError(msg)
+    #
+    #     instance.save()
+    #     return instance
