@@ -100,10 +100,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'weatherdiary',
-        'USER': os.environ['USER'],
-        'PASSWORD': os.environ['PASSWORD'],
-        'HOST': os.environ['HOST'],
+        'DBNAME': 'weatherdiary',
+        'DBUSER': os.environ['DBUSER'],
+        'DBPASS': os.environ['DBPASS'],
+        'DBHOST': os.environ['DBHOST'],
         'PORT': '5432',
     }
 }
